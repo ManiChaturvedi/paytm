@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-mongoose.connect('mongodb+srv://maniraj96950:174956Mani@cluster0.egwgl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+mongoose.connect('mongodb://localhost:27017');
 
 const Userschema=mongoose.Schema({
     username: String,
