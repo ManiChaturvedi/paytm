@@ -1,7 +1,7 @@
 const express = require('express');
 const zod=require('zod');
 const jwt=require('jsonwebtoken');
-const { User } = require('../db');
+const { User, Account } = require('../db');
 const { JWT_SECRET } = require('../config');
 const { authMiddleware } = require('../middleware');
 
@@ -40,6 +40,11 @@ userrouter.post("/signup",async(req,res)=>{
 
     const userid=user._id;
 
+    await Account.create({
+        userid,
+        balance:1+Math.random()*10000
+    })
+
     const token=jwt.sign({
         userid
     },JWT_SECRET);
@@ -53,7 +58,7 @@ userrouter.post("/signup",async(req,res)=>{
 })
 
 userrouter.post("/signin",async(req,res)=>{
-    const { success } = signinBody.safeParse(req.body)
+    const { success } = signupbody.safeParse(req.body)
     if (!success) {
         return res.status(411).json({
             message: "Incorrect inputs"
@@ -95,7 +100,7 @@ userrouter.put("/", authMiddleware, async (req, res) => {
         })
     }
 
-		await User.updateOne({ _id: req.userId }, req.body);
+	await User.updateOne({ _id: req.userId }, req.body);
 	
     res.json({
         message: "Updated successfully"
