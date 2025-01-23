@@ -1,7 +1,7 @@
-import Dashboard from "./pages/dashboard";
-import SendMoney from "./pages/senmoney";
-import Signin from "./pages/signin";
-import Signup from "./pages/signup";
+import {Dashboard} from "./pages/dashboard";
+import {SendMoney} from "./pages/senmoney";
+import {Signin} from "./pages/signin";
+import {Signup} from "./pages/signup";
 
   function App() {
   return (

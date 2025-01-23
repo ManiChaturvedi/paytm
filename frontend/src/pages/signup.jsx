@@ -1,5 +1,5 @@
 import { Button } from "../components/Button";
-import { BottomWarning } from "../components/ButtonWaring";
+import { BottomWarning } from "../components/BottomWarning";
 import { Heading } from "../components/Heading";
 import { InputBox } from "../components/InputBox";
 import { SubHeading } from "../components/SubHeading";
